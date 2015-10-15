@@ -7,12 +7,3 @@ D:\USUARIO WINDOWS 8.1\Documents\Visual Studio 2015\Projects\Poryecto InfoAplica
 D:\USUARIO WINDOWS 8.1\Documents\Visual Studio 2015\Projects\Poryecto InfoAplicada\Poryecto InfoAplicada\obj\Debug\Poryecto_InfoAplicada.Form1.resources
 D:\USUARIO WINDOWS 8.1\Documents\Visual Studio 2015\Projects\Poryecto InfoAplicada\Poryecto InfoAplicada\obj\Debug\Poryecto_InfoAplicada.Properties.Resources.resources
 D:\USUARIO WINDOWS 8.1\Documents\Visual Studio 2015\Projects\Poryecto InfoAplicada\Poryecto InfoAplicada\obj\Debug\Proyecto InfoAplicada.csproj.GenerateResource.Cache
-C:\Users\ANDRES\Documents\GitHub\Clientes\InfoAplicada PROYECTO\Proyecto InfoAplicada\Poryecto InfoAplicada\bin\Debug\Proyecto InfoAplicada.exe.config
-C:\Users\ANDRES\Documents\GitHub\Clientes\InfoAplicada PROYECTO\Proyecto InfoAplicada\Poryecto InfoAplicada\obj\Debug\Proyecto InfoAplicada.exe
-C:\Users\ANDRES\Documents\GitHub\Clientes\InfoAplicada PROYECTO\Proyecto InfoAplicada\Poryecto InfoAplicada\obj\Debug\Proyecto InfoAplicada.pdb
-C:\Users\ANDRES\Documents\GitHub\Clientes\InfoAplicada PROYECTO\Proyecto InfoAplicada\Poryecto InfoAplicada\bin\Debug\Proyecto InfoAplicada.exe
-C:\Users\ANDRES\Documents\GitHub\Clientes\InfoAplicada PROYECTO\Proyecto InfoAplicada\Poryecto InfoAplicada\bin\Debug\Proyecto InfoAplicada.pdb
-C:\Users\ANDRES\Documents\GitHub\Clientes\InfoAplicada PROYECTO\Proyecto InfoAplicada\Poryecto InfoAplicada\obj\Debug\Proyecto InfoAplicada.csprojResolveAssemblyReference.cache
-C:\Users\ANDRES\Documents\GitHub\Clientes\InfoAplicada PROYECTO\Proyecto InfoAplicada\Poryecto InfoAplicada\obj\Debug\Poryecto_InfoAplicada.Form1.resources
-C:\Users\ANDRES\Documents\GitHub\Clientes\InfoAplicada PROYECTO\Proyecto InfoAplicada\Poryecto InfoAplicada\obj\Debug\Poryecto_InfoAplicada.Properties.Resources.resources
-C:\Users\ANDRES\Documents\GitHub\Clientes\InfoAplicada PROYECTO\Proyecto InfoAplicada\Poryecto InfoAplicada\obj\Debug\Proyecto InfoAplicada.csproj.GenerateResource.Cache
