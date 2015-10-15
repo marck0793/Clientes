@@ -1,9 +1,0 @@
-D:\USUARIO WINDOWS 8.1\Documents\Visual Studio 2015\Projects\Poryecto InfoAplicada\Poryecto InfoAplicada\bin\Debug\Proyecto InfoAplicada.exe.config
-D:\USUARIO WINDOWS 8.1\Documents\Visual Studio 2015\Projects\Poryecto InfoAplicada\Poryecto InfoAplicada\obj\Debug\Proyecto InfoAplicada.exe
-D:\USUARIO WINDOWS 8.1\Documents\Visual Studio 2015\Projects\Poryecto InfoAplicada\Poryecto InfoAplicada\obj\Debug\Proyecto InfoAplicada.pdb
-D:\USUARIO WINDOWS 8.1\Documents\Visual Studio 2015\Projects\Poryecto InfoAplicada\Poryecto InfoAplicada\bin\Debug\Proyecto InfoAplicada.exe
-D:\USUARIO WINDOWS 8.1\Documents\Visual Studio 2015\Projects\Poryecto InfoAplicada\Poryecto InfoAplicada\bin\Debug\Proyecto InfoAplicada.pdb
-D:\USUARIO WINDOWS 8.1\Documents\Visual Studio 2015\Projects\Poryecto InfoAplicada\Poryecto InfoAplicada\obj\Debug\Proyecto InfoAplicada.csprojResolveAssemblyReference.cache
-D:\USUARIO WINDOWS 8.1\Documents\Visual Studio 2015\Projects\Poryecto InfoAplicada\Poryecto InfoAplicada\obj\Debug\Poryecto_InfoAplicada.Form1.resources
-D:\USUARIO WINDOWS 8.1\Documents\Visual Studio 2015\Projects\Poryecto InfoAplicada\Poryecto InfoAplicada\obj\Debug\Poryecto_InfoAplicada.Properties.Resources.resources
-D:\USUARIO WINDOWS 8.1\Documents\Visual Studio 2015\Projects\Poryecto InfoAplicada\Poryecto InfoAplicada\obj\Debug\Proyecto InfoAplicada.csproj.GenerateResource.Cache
