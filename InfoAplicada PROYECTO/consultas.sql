@@ -21,3 +21,6 @@ inner join ProductSubCategory ps on ps.ProductSubCategoryID = p.ProductSubCatego
 inner join ProductCategory pc on pc.ProductCategoryID = ps.ProductCategoryID and 
 pc.ProductCategoryID = 1 group by i.CustomerID, i.FirstName, i.LastName, pc.Name order by Cantidad desc;
 
+--CLIENTES
+select i.CustomerID, i.FirstName, i.LastName from Individual i
+inner join SalesOrderHeader soh on soh.CustomerID = i.CustomerID group by i.CustomerID, i.FirstName, i.LastName

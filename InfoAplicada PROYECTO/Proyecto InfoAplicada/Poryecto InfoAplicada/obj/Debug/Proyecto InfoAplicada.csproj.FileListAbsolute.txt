@@ -16,3 +16,12 @@ C:\Users\ANDRES\Documents\GitHub\Clientes\InfoAplicada PROYECTO\Proyecto InfoApl
 C:\Users\ANDRES\Documents\GitHub\Clientes\InfoAplicada PROYECTO\Proyecto InfoAplicada\Poryecto InfoAplicada\obj\Debug\Poryecto_InfoAplicada.Form1.resources
 C:\Users\ANDRES\Documents\GitHub\Clientes\InfoAplicada PROYECTO\Proyecto InfoAplicada\Poryecto InfoAplicada\obj\Debug\Poryecto_InfoAplicada.Properties.Resources.resources
 C:\Users\ANDRES\Documents\GitHub\Clientes\InfoAplicada PROYECTO\Proyecto InfoAplicada\Poryecto InfoAplicada\obj\Debug\Proyecto InfoAplicada.csproj.GenerateResource.Cache
+C:\Users\marlon\Documents\GitHub\Clientes\InfoAplicada PROYECTO\Proyecto InfoAplicada\Poryecto InfoAplicada\bin\Debug\Proyecto InfoAplicada.exe.config
+C:\Users\marlon\Documents\GitHub\Clientes\InfoAplicada PROYECTO\Proyecto InfoAplicada\Poryecto InfoAplicada\obj\Debug\Proyecto InfoAplicada.exe
+C:\Users\marlon\Documents\GitHub\Clientes\InfoAplicada PROYECTO\Proyecto InfoAplicada\Poryecto InfoAplicada\obj\Debug\Proyecto InfoAplicada.pdb
+C:\Users\marlon\Documents\GitHub\Clientes\InfoAplicada PROYECTO\Proyecto InfoAplicada\Poryecto InfoAplicada\bin\Debug\Proyecto InfoAplicada.exe
+C:\Users\marlon\Documents\GitHub\Clientes\InfoAplicada PROYECTO\Proyecto InfoAplicada\Poryecto InfoAplicada\bin\Debug\Proyecto InfoAplicada.pdb
+C:\Users\marlon\Documents\GitHub\Clientes\InfoAplicada PROYECTO\Proyecto InfoAplicada\Poryecto InfoAplicada\obj\Debug\Proyecto InfoAplicada.csprojResolveAssemblyReference.cache
+C:\Users\marlon\Documents\GitHub\Clientes\InfoAplicada PROYECTO\Proyecto InfoAplicada\Poryecto InfoAplicada\obj\Debug\Poryecto_InfoAplicada.Form1.resources
+C:\Users\marlon\Documents\GitHub\Clientes\InfoAplicada PROYECTO\Proyecto InfoAplicada\Poryecto InfoAplicada\obj\Debug\Poryecto_InfoAplicada.Properties.Resources.resources
+C:\Users\marlon\Documents\GitHub\Clientes\InfoAplicada PROYECTO\Proyecto InfoAplicada\Poryecto InfoAplicada\obj\Debug\Proyecto InfoAplicada.csproj.GenerateResource.Cache

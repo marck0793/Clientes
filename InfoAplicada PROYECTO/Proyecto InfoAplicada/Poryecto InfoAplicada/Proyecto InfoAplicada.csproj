@@ -45,6 +45,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdventureWorks2000DataSet.cs">
+      <DependentUpon>AdventureWorks2000DataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AdventureWorks2000DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AdventureWorks2000DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Vista\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,6 +74,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="AdventureWorks2000DataSet.xsc">
+      <DependentUpon>AdventureWorks2000DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AdventureWorks2000DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AdventureWorks2000DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="AdventureWorks2000DataSet.xss">
+      <DependentUpon>AdventureWorks2000DataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
