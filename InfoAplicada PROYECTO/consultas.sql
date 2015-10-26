@@ -31,12 +31,19 @@ SELECT * FROM Customer WHERE CustomerID LIKE '%20%';
 
 --region
 
+select TerritoryID, name from SalesTerritory;
+
+select i.CustomerID, i.FirstName, i.LastName, c.TerritoryID from Individual i
+inner join Customer c on c.CustomerID = i.CustomerID
+group by i.customerID, i.FirstName, i.LastName, c.TerritoryID
+
+select * from Customer
 
 
 --VIP
 
-select sum(totaldue) as totalCompras
-from SalesOrderHeader
-group by CustomerID 
-HAVING SUM(totaldue) > (select avg(totaldue) from SalesOrderHeader)
+select i.CustomerID, i.FirstName, i.LastName, SUM(soh.totaldue) as totalCompras from Individual i
+inner join SalesOrderHeader soh on i.CustomerID=soh.CustomerID
+group by i.CustomerID, i.FirstName, i.LastName 
+HAVING SUM(soh.totaldue) > (select avg(totaldue) from SalesOrderHeader)
 order by totalCompras desc;
