@@ -24,3 +24,19 @@ pc.ProductCategoryID = 1 group by i.CustomerID, i.FirstName, i.LastName, pc.Name
 --CLIENTES
 select i.CustomerID, i.FirstName, i.LastName from Individual i
 inner join SalesOrderHeader soh on soh.CustomerID = i.CustomerID group by i.CustomerID, i.FirstName, i.LastName
+
+--cedula
+
+SELECT * FROM Customer WHERE CustomerID LIKE '%20%';
+
+--region
+
+
+
+--VIP
+
+select sum(totaldue) as totalCompras
+from SalesOrderHeader
+group by CustomerID 
+HAVING SUM(totaldue) > (select avg(totaldue) from SalesOrderHeader)
+order by totalCompras desc;
