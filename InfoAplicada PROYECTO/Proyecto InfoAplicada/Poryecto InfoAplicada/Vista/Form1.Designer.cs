@@ -61,10 +61,11 @@
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tpClientes = new System.Windows.Forms.TabPage();
+            this.pDinamico = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.cbFiltro = new System.Windows.Forms.ComboBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvClientes = new System.Windows.Forms.DataGridView();
             this.cedulaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.apellidoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -104,8 +105,8 @@
             this.tabPage3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tpClientes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.adventureWorks2000DataSet)).BeginInit();
             this.proveedores.SuspendLayout();
@@ -234,7 +235,7 @@
             // tabControl3
             // 
             this.tabControl3.Controls.Add(this.tabPage3);
-            this.tabControl3.Controls.Add(this.tabPage4);
+            this.tabControl3.Controls.Add(this.tpClientes);
             this.tabControl3.Location = new System.Drawing.Point(2, 2);
             this.tabControl3.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl3.Name = "tabControl3";
@@ -438,24 +439,32 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Buscar promociones por:";
             // 
-            // tabPage4
+            // tpClientes
             // 
-            this.tabPage4.Controls.Add(this.label6);
-            this.tabPage4.Controls.Add(this.cbFiltro);
-            this.tabPage4.Controls.Add(this.dataGridView1);
-            this.tabPage4.Location = new System.Drawing.Point(4, 25);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage4.Size = new System.Drawing.Size(1075, 511);
-            this.tabPage4.TabIndex = 1;
-            this.tabPage4.Text = "Clientes";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            this.tpClientes.Controls.Add(this.pDinamico);
+            this.tpClientes.Controls.Add(this.label6);
+            this.tpClientes.Controls.Add(this.cbFiltro);
+            this.tpClientes.Controls.Add(this.dgvClientes);
+            this.tpClientes.Location = new System.Drawing.Point(4, 25);
+            this.tpClientes.Margin = new System.Windows.Forms.Padding(2);
+            this.tpClientes.Name = "tpClientes";
+            this.tpClientes.Padding = new System.Windows.Forms.Padding(2);
+            this.tpClientes.Size = new System.Drawing.Size(1075, 511);
+            this.tpClientes.TabIndex = 1;
+            this.tpClientes.Text = "Clientes";
+            this.tpClientes.UseVisualStyleBackColor = true;
+            // 
+            // pDinamico
+            // 
+            this.pDinamico.Location = new System.Drawing.Point(651, 124);
+            this.pDinamico.Name = "pDinamico";
+            this.pDinamico.Size = new System.Drawing.Size(254, 100);
+            this.pDinamico.TabIndex = 3;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(697, 21);
+            this.label6.Location = new System.Drawing.Point(648, 21);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(39, 17);
             this.label6.TabIndex = 2;
@@ -468,26 +477,28 @@
             "Cedula",
             "Region",
             "Categorias",
-            "VIP"});
-            this.cbFiltro.Location = new System.Drawing.Point(697, 51);
+            "VIP",
+            "Todos"});
+            this.cbFiltro.Location = new System.Drawing.Point(651, 52);
             this.cbFiltro.Name = "cbFiltro";
             this.cbFiltro.Size = new System.Drawing.Size(121, 24);
             this.cbFiltro.TabIndex = 1;
+            this.cbFiltro.SelectedIndexChanged += new System.EventHandler(this.cbFiltro_SelectedIndexChanged);
             this.cbFiltro.SelectedValueChanged += new System.EventHandler(this.cbFiltro_SelectedValueChanged);
             // 
-            // dataGridView1
+            // dgvClientes
             // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvClientes.AutoGenerateColumns = false;
+            this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cedulaDataGridViewTextBoxColumn,
             this.nombreDataGridViewTextBoxColumn,
             this.apellidoDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.customerBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(24, 21);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(532, 468);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvClientes.DataSource = this.customerBindingSource;
+            this.dgvClientes.Location = new System.Drawing.Point(24, 21);
+            this.dgvClientes.Name = "dgvClientes";
+            this.dgvClientes.Size = new System.Drawing.Size(532, 468);
+            this.dgvClientes.TabIndex = 0;
             // 
             // cedulaDataGridViewTextBoxColumn
             // 
@@ -823,9 +834,9 @@
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tpClientes.ResumeLayout(false);
+            this.tpClientes.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.adventureWorks2000DataSet)).EndInit();
             this.proveedores.ResumeLayout(false);
@@ -884,7 +895,7 @@
         private System.Windows.Forms.TabPage tabPage14;
         private System.Windows.Forms.TabControl tabControl3;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TabPage tpClientes;
         private System.Windows.Forms.TabControl tabControl2;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
@@ -906,7 +917,7 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvClientes;
         private AdventureWorks2000DataSet adventureWorks2000DataSet;
         private System.Windows.Forms.BindingSource customerBindingSource;
         private AdventureWorks2000DataSetTableAdapters.CustomerTableAdapter customerTableAdapter;
@@ -919,6 +930,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cedulaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn apellidoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Panel pDinamico;
     }
 }
 

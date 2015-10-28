@@ -27,7 +27,9 @@ inner join SalesOrderHeader soh on soh.CustomerID = i.CustomerID group by i.Cust
 
 --cedula
 
-SELECT * FROM Customer WHERE CustomerID LIKE '%20%';
+select i.CustomerID, i.FirstName, i.LastName from Individual i
+inner join SalesOrderHeader soh on i.CustomerID like '%20%' and soh.CustomerID = i.CustomerID group by i.CustomerID, i.FirstName, i.LastName order by i.CustomerID 
+
 
 --region
 

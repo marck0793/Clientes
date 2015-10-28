@@ -54,6 +54,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AdventureWorks2000DataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Modelo\BDComun.cs" />
     <Compile Include="Vista\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
