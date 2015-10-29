@@ -18,7 +18,7 @@ namespace Poryecto_InfoAplicada
         SqlConnection con = Poryecto_InfoAplicada.Modelo.BDComun.ObtenerConexion();
         ComboBox cbCategorias;
         Panel patito;
-        
+        ComboBox cbSubcategorias;
 
         public Form1()
         {
@@ -58,6 +58,18 @@ namespace Poryecto_InfoAplicada
 
         }
 
+        private void actualizarLista(String consulta) {
+
+            SqlDataAdapter adapt = new SqlDataAdapter(consulta, con);
+            DataTable dt = new DataTable();
+            adapt.Fill(dt);
+            tpClientes.Controls.Remove(dgvClientes);
+            dgvClientes = new DataGridView();
+            dgvClientes.Width = 500;
+            dgvClientes.Height = 600;
+            dgvClientes.DataSource = dt;
+            tpClientes.Controls.Add(dgvClientes);
+        }
 
         private void cbFiltro_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -77,16 +89,8 @@ namespace Poryecto_InfoAplicada
                     
                     break;
                 case "VIP":
-                    SqlDataAdapter adap = new SqlDataAdapter("select i.CustomerID, i.FirstName, i.LastName, SUM(soh.totaldue) as totalCompras from Individual i inner join SalesOrderHeader soh on i.CustomerID=soh.CustomerID group by i.CustomerID, i.FirstName, i.LastName HAVING SUM(soh.totaldue) > (select avg(totaldue) from SalesOrderHeader) order by totalCompras desc;", con);
-                    dt = new DataTable();
-                    adap.Fill(dt);
-                    tpClientes.Controls.Remove(dgvClientes);
-                    dgvClientes = new DataGridView();
-                    dgvClientes.Width = 500;
-                    dgvClientes.Height = 600;
-                    dgvClientes.DataSource = dt;
-                    tpClientes.Controls.Add(dgvClientes);
-                    
+
+                    actualizarLista("select i.CustomerID, i.FirstName, i.LastName, SUM(soh.totaldue) as totalCompras from Individual i inner join SalesOrderHeader soh on i.CustomerID=soh.CustomerID group by i.CustomerID, i.FirstName, i.LastName HAVING SUM(soh.totaldue) > (select avg(totaldue) from SalesOrderHeader) order by totalCompras desc;");
                     break;
                 case "Categorias":
                     //sql
@@ -113,18 +117,13 @@ namespace Poryecto_InfoAplicada
                     patito = new Panel();
                     patito.SetBounds(120,0,130,50);
                     pDinamico.Controls.Add(patito);
+
+                    
+                    actualizarLista("select i.CustomerID, i.FirstName, i.LastName from Individual i inner join SalesOrderHeader soh on soh.CustomerID = i.CustomerID inner join SalesOrderDetail sod on sod.SalesOrderID = soh.SalesOrderID inner join Product p on p.ProductID = sod.ProductID  inner join ProductSubCategory ps on ps.ProductSubCategoryID = p.ProductSubCategoryID inner join ProductCategory pc on pc.ProductCategoryID = ps.ProductCategoryID and pc.ProductCategoryID = (select ProductCategoryID from ProductCategory where Name = '" + cbCategorias.Text + "') group by i.CustomerID, i.FirstName, i.LastName;");
                     break;
                 default:
-                    SqlDataAdapter adapt = new SqlDataAdapter("select i.CustomerID, i.FirstName, i.LastName from Individual i inner join SalesOrderHeader soh on soh.CustomerID = i.CustomerID group by i.CustomerID, i.FirstName, i.LastName", con);
-                    dt = new DataTable();
-                    adapt.Fill(dt);
-                    tpClientes.Controls.Remove(dgvClientes);
-                    dgvClientes = new DataGridView();
-                    dgvClientes.Width = 500;
-                    dgvClientes.Height = 600;
-                    dgvClientes.DataSource = dt;
-                    tpClientes.Controls.Add(dgvClientes);
-                    Console.WriteLine(cbFiltro.Text);
+
+                    actualizarLista( "select i.CustomerID, i.FirstName, i.LastName from Individual i inner join SalesOrderHeader soh on soh.CustomerID = i.CustomerID group by i.CustomerID, i.FirstName, i.LastName");
                     break;
             }
         }
@@ -133,18 +132,25 @@ namespace Poryecto_InfoAplicada
 
             
             //--SubCategorias
-            ComboBox cbSubcategorias = new ComboBox();
+            cbSubcategorias = new ComboBox();
             
-            SqlDataAdapter dad = new SqlDataAdapter("select  psc.Name as Name from ProductSubCategory psc inner join ProductCategory pc on pc.ProductCategoryID = psc.ProductCategoryID and psc.ProductCategoryID= (select ProductCategoryID from ProductCategory where Name = '" + this.cbCategorias.Text + "') order by ProductSubCategoryID; ", con);
+            SqlDataAdapter dad = new SqlDataAdapter("select psc.Name as Name from ProductSubCategory psc inner join ProductCategory pc on pc.ProductCategoryID = psc.ProductCategoryID and psc.ProductCategoryID= (select ProductCategoryID from ProductCategory where Name = '" + this.cbCategorias.Text + "') order by ProductSubCategoryID; ", con);
             DataTable dt = new DataTable();
             dad.Fill(dt);
             cbSubcategorias.DataSource = dt;
             cbSubcategorias.DisplayMember = "Name";
             cbSubcategorias.ValueMember = "Name";
+            cbSubcategorias.SelectedValueChanged += new System.EventHandler(this.cbSubcategorias_selectedValueChanged);
             patito.Controls.Clear();
             patito.Controls.Add(cbSubcategorias);
+
+            actualizarLista("select i.CustomerID, i.FirstName, i.LastName from Individual i inner join SalesOrderHeader soh on soh.CustomerID = i.CustomerID inner join SalesOrderDetail sod on sod.SalesOrderID = soh.SalesOrderID inner join Product p on p.ProductID = sod.ProductID inner join ProductSubCategory ps on ps.ProductSubCategoryID = (select ProductSubCategoryID from ProductSubCategory where name = '"+cbSubcategorias.Text+"') group by i.CustomerID, i.FirstName, i.LastName;");
            
             
+        }
+
+        private void cbSubcategorias_selectedValueChanged(object sender, EventArgs e) {
+            actualizarLista("select i.CustomerID, i.FirstName, i.LastName from Individual i inner join SalesOrderHeader soh on soh.CustomerID = i.CustomerID inner join SalesOrderDetail sod on sod.SalesOrderID = soh.SalesOrderID inner join Product p on p.ProductID = sod.ProductID inner join ProductSubCategory ps on ps.ProductSubCategoryID = (select ProductSubCategoryID from ProductSubCategory where name = '" + cbSubcategorias.Text + "') group by i.CustomerID, i.FirstName, i.LastName;");
         }
 
         private void cbFiltro_SelectedIndexChanged(object sender, EventArgs e)

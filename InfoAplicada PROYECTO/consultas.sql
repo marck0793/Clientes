@@ -2,24 +2,24 @@
 select ProductCategoryID, Name from ProductCategory order by ProductCategoryID;
 
 --SUBCATEGORIAS--
-select ProductSubCategoryID, Name from ProductSubCategory order by ProductSubCategoryID; 
+select  psc.Name from ProductSubCategory psc inner join ProductCategory pc on pc.ProductCategoryID = psc.ProductCategoryID and psc.ProductCategoryID= (select ProductCategoryID from ProductCategory where Name = 'Bike') order by ProductSubCategoryID; 
 
 --CLIENTES POR SUBCATEGORIAS--
 select i.CustomerID, i.FirstName, i.LastName, ps.Name as subCategoria, COUNT(*) as Cantidad from Individual i
 inner join SalesOrderHeader soh on soh.CustomerID = i.CustomerID inner join SalesOrderDetail sod
 on sod.SalesOrderID = soh.SalesOrderID
 inner join Product p on p.ProductID = sod.ProductID
-inner join ProductSubCategory ps on ps.ProductSubCategoryID = 2  
+inner join ProductSubCategory ps on ps.ProductSubCategoryID = (select ProductSubCategoryID from ProductSubCategory where name = '')  
 group by i.CustomerID, i.FirstName, i.LastName, ps.Name order by Cantidad desc;
 
 --CLIENTES POR CATEGORIAS--
-select i.CustomerID, i.FirstName, i.LastName, pc.Name as Categoria, count(*) AS Cantidad from Individual i
+select i.CustomerID, i.FirstName, i.LastName,  count(*) AS Cantidad from Individual i
 inner join SalesOrderHeader soh on soh.CustomerID = i.CustomerID inner join SalesOrderDetail sod
 on sod.SalesOrderID = soh.SalesOrderID
 inner join Product p on p.ProductID = sod.ProductID
 inner join ProductSubCategory ps on ps.ProductSubCategoryID = p.ProductSubCategoryID
 inner join ProductCategory pc on pc.ProductCategoryID = ps.ProductCategoryID and 
-pc.ProductCategoryID = 1 group by i.CustomerID, i.FirstName, i.LastName, pc.Name order by Cantidad desc;
+pc.ProductCategoryID = (select ProductCategoryID from ProductCategory where Name = 'Bike') group by i.CustomerID, i.FirstName, i.LastName, pc.Name order by Cantidad desc;
 
 --CLIENTES
 select i.CustomerID, i.FirstName, i.LastName from Individual i
