@@ -5,6 +5,7 @@ select ProductCategoryID, Name from ProductCategory order by ProductCategoryID;
 select  psc.Name from ProductSubCategory psc inner join ProductCategory pc on pc.ProductCategoryID = psc.ProductCategoryID and psc.ProductCategoryID= (select ProductCategoryID from ProductCategory where Name = 'Bike') order by ProductSubCategoryID; 
 
 --CLIENTES POR SUBCATEGORIAS--
+
 select i.CustomerID, i.FirstName, i.LastName, ps.Name as subCategoria, COUNT(*) as Cantidad from Individual i
 inner join SalesOrderHeader soh on soh.CustomerID = i.CustomerID inner join SalesOrderDetail sod
 on sod.SalesOrderID = soh.SalesOrderID
@@ -12,6 +13,15 @@ inner join Product p on p.ProductID = sod.ProductID
 inner join ProductSubCategory ps on ps.ProductSubCategoryID = (select ProductSubCategoryID 
 from ProductSubCategory where name = 'Mountain Bike')  
 group by i.CustomerID, i.FirstName, i.LastName, ps.Name order by Cantidad desc;
+
+
+select i.CustomerID, i.FirstName, i.LastName, ps.Name as subCategoria, COUNT(*) as Cantidad from Individual i
+inner join SalesOrderHeader soh on soh.CustomerID = i.CustomerID inner join SalesOrderDetail sod
+on sod.SalesOrderID = soh.SalesOrderID
+inner join Product p on p.ProductID = sod.ProductID
+inner join ProductSubCategory ps on ps.ProductSubCategoryID = 4
+group by i.CustomerID, i.FirstName, i.LastName, ps.Name order by Cantidad desc;
+
 
 --CLIENTES POR CATEGORIAS--
 select i.CustomerID, i.FirstName, i.LastName,  count(*) AS Cantidad from Individual i
@@ -54,7 +64,8 @@ order by totalCompras desc;
 --PROMOCIONES
 
 select distinct Description from SpecialOffer so inner join SpecialOfferProduct sop  
-on so.SpecialOfferID=sop.SpecialOfferID;
+on so.SpecialOfferID=sop.SpecialOfferID inner join Product p on p.ProductID=sop.ProductID
+inner join ProductSubCategory psc on p.ProductSubCategoryID= 4;
 
 select description from SpecialOffer;
 
