@@ -1,4 +1,6 @@
-﻿namespace Poryecto_InfoAplicada
+﻿using System.Data;
+using System.Data.SqlClient;
+namespace Poryecto_InfoAplicada
 {
     partial class Form1
     {
@@ -43,20 +45,20 @@
             this.clientes = new System.Windows.Forms.TabPage();
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
+            this.cbCategoriasOffer = new System.Windows.Forms.ComboBox();
+            this.productCategoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.adventureWorks2000DataSet = new Poryecto_InfoAplicada.AdventureWorks2000DataSet();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.productSubCategoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dt = new System.Data.DataTable();
             this.label2 = new System.Windows.Forms.Label();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -69,8 +71,6 @@
             this.cedulaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.apellidoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.adventureWorks2000DataSet = new Poryecto_InfoAplicada.AdventureWorks2000DataSet();
             this.proveedores = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -98,17 +98,24 @@
             this.seguridad = new System.Windows.Forms.TabPage();
             this.customerTableAdapter = new Poryecto_InfoAplicada.AdventureWorks2000DataSetTableAdapters.CustomerTableAdapter();
             this.adventureWorks2000DataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.productCategoryTableAdapter = new Poryecto_InfoAplicada.AdventureWorks2000DataSetTableAdapters.ProductCategoryTableAdapter();
+            this.adventureWorks2000DataSet1 = new Poryecto_InfoAplicada.AdventureWorks2000DataSet1();
+            this.productSubCategoryTableAdapter = new Poryecto_InfoAplicada.AdventureWorks2000DataSet1TableAdapters.ProductSubCategoryTableAdapter();
+            this.dad = new System.Data.SqlClient.SqlDataAdapter();
+            this.pDinamicoOffer = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.clientes.SuspendLayout();
             this.tabControl3.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.productCategoryBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.adventureWorks2000DataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productSubCategoryBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dt)).BeginInit();
             this.tpClientes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.adventureWorks2000DataSet)).BeginInit();
             this.proveedores.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.ventas.SuspendLayout();
@@ -122,6 +129,7 @@
             this.inventarios.SuspendLayout();
             this.tabControl8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.adventureWorks2000DataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.adventureWorks2000DataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -245,12 +253,13 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.panel1);
+            this.tabPage3.Controls.Add(this.pDinamicoOffer);
+            this.tabPage3.Controls.Add(this.cbCategoriasOffer);
+            this.tabPage3.Controls.Add(this.dataGridView1);
             this.tabPage3.Controls.Add(this.comboBox2);
             this.tabPage3.Controls.Add(this.label5);
             this.tabPage3.Controls.Add(this.button7);
             this.tabPage3.Controls.Add(this.button1);
-            this.tabPage3.Controls.Add(this.comboBox1);
             this.tabPage3.Controls.Add(this.label2);
             this.tabPage3.Controls.Add(this.checkBox2);
             this.tabPage3.Controls.Add(this.checkBox1);
@@ -264,104 +273,71 @@
             this.tabPage3.Text = "Promociones";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // panel1
+            // cbCategoriasOffer
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.tableLayoutPanel1);
-            this.panel1.Controls.Add(this.button6);
-            this.panel1.Location = new System.Drawing.Point(501, 27);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(478, 342);
-            this.panel1.TabIndex = 16;
-            this.panel1.Tag = "";
+            this.cbCategoriasOffer.DataSource = this.productCategoryBindingSource;
+            this.cbCategoriasOffer.DisplayMember = "Name";
+            this.cbCategoriasOffer.FormattingEnabled = true;
+            this.cbCategoriasOffer.Location = new System.Drawing.Point(18, 97);
+            this.cbCategoriasOffer.Name = "cbCategoriasOffer";
+            this.cbCategoriasOffer.Size = new System.Drawing.Size(121, 24);
+            this.cbCategoriasOffer.TabIndex = 17;
+            this.cbCategoriasOffer.ValueMember = "ProductCategoryID";
+            this.cbCategoriasOffer.SelectedIndexChanged += new System.EventHandler(this.cbCategoriasOffer_SelectedIndexChanged);
             // 
-            // tableLayoutPanel1
+            // productCategoryBindingSource
             // 
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.Controls.Add(this.button5, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.button4, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button3, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.button2, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(10, 90);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(310, 75);
-            this.tableLayoutPanel1.TabIndex = 6;
+            this.productCategoryBindingSource.DataMember = "ProductCategory";
+            this.productCategoryBindingSource.DataSource = this.adventureWorks2000DataSet;
             // 
-            // button5
+            // adventureWorks2000DataSet
             // 
-            this.button5.Location = new System.Drawing.Point(173, 39);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(130, 30);
-            this.button5.TabIndex = 11;
-            this.button5.Text = "Enviar Promoción";
-            this.button5.UseVisualStyleBackColor = true;
+            this.adventureWorks2000DataSet.DataSetName = "AdventureWorks2000DataSet";
+            this.adventureWorks2000DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // button4
+            // dataGridView1
             // 
-            this.button4.Location = new System.Drawing.Point(173, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(130, 30);
-            this.button4.TabIndex = 10;
-            this.button4.Text = "Enviar Promoción";
-            this.button4.UseVisualStyleBackColor = true;
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3});
+            this.dataGridView1.DataSource = this.customerBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(459, 27);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(532, 468);
+            this.dataGridView1.TabIndex = 16;
             // 
-            // button3
+            // dataGridViewTextBoxColumn1
             // 
-            this.button3.Location = new System.Drawing.Point(72, 39);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(95, 30);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "Ver Datos";
-            this.button3.UseVisualStyleBackColor = true;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Cedula";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Cedula";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
-            // label4
+            // dataGridViewTextBoxColumn2
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 36);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(63, 17);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Cliente 2";
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Nombre";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Nombre";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             // 
-            // button2
+            // dataGridViewTextBoxColumn3
             // 
-            this.button2.Location = new System.Drawing.Point(72, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(95, 30);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Ver Datos";
-            this.button2.UseVisualStyleBackColor = true;
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Apellido";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Apellido";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             // 
-            // label3
+            // customerBindingSource
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 17);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Cliente 1";
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(10, 31);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(265, 30);
-            this.button6.TabIndex = 12;
-            this.button6.Text = "Enviar promoción a todos los clientes";
-            this.button6.UseVisualStyleBackColor = true;
+            this.customerBindingSource.DataMember = "Customer";
+            this.customerBindingSource.DataSource = this.adventureWorks2000DataSet;
             // 
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(200, 160);
+            this.comboBox2.Location = new System.Drawing.Point(202, 208);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 24);
             this.comboBox2.TabIndex = 15;
@@ -369,7 +345,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(21, 163);
+            this.label5.Location = new System.Drawing.Point(14, 215);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(169, 17);
             this.label5.TabIndex = 14;
@@ -377,7 +353,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(17, 100);
+            this.button7.Location = new System.Drawing.Point(15, 152);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(168, 30);
             this.button7.TabIndex = 13;
@@ -386,20 +362,17 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(16, 212);
+            this.button1.Location = new System.Drawing.Point(17, 266);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(264, 30);
             this.button1.TabIndex = 5;
             this.button1.Text = "Buscar clientes para promoción";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // productSubCategoryBindingSource
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(288, 64);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 24);
-            this.comboBox1.TabIndex = 4;
+            this.productSubCategoryBindingSource.DataMember = "ProductSubCategory";
+            this.productSubCategoryBindingSource.DataSource = this.dt;
             // 
             // label2
             // 
@@ -489,6 +462,8 @@
             // dgvClientes
             // 
             this.dgvClientes.AutoGenerateColumns = false;
+            this.dgvClientes.BackgroundColor = System.Drawing.Color.White;
+            this.dgvClientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cedulaDataGridViewTextBoxColumn,
@@ -499,6 +474,7 @@
             this.dgvClientes.Name = "dgvClientes";
             this.dgvClientes.Size = new System.Drawing.Size(532, 468);
             this.dgvClientes.TabIndex = 0;
+            this.dgvClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClientes_CellContentClick);
             // 
             // cedulaDataGridViewTextBoxColumn
             // 
@@ -517,16 +493,6 @@
             this.apellidoDataGridViewTextBoxColumn.DataPropertyName = "Apellido";
             this.apellidoDataGridViewTextBoxColumn.HeaderText = "Apellido";
             this.apellidoDataGridViewTextBoxColumn.Name = "apellidoDataGridViewTextBoxColumn";
-            // 
-            // customerBindingSource
-            // 
-            this.customerBindingSource.DataMember = "Customer";
-            this.customerBindingSource.DataSource = this.adventureWorks2000DataSet;
-            // 
-            // adventureWorks2000DataSet
-            // 
-            this.adventureWorks2000DataSet.DataSetName = "AdventureWorks2000DataSet";
-            this.adventureWorks2000DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // proveedores
             // 
@@ -812,6 +778,26 @@
             this.adventureWorks2000DataSetBindingSource.DataSource = this.adventureWorks2000DataSet;
             this.adventureWorks2000DataSetBindingSource.Position = 0;
             // 
+            // productCategoryTableAdapter
+            // 
+            this.productCategoryTableAdapter.ClearBeforeFill = true;
+            // 
+            // adventureWorks2000DataSet1
+            // 
+            this.adventureWorks2000DataSet1.DataSetName = "AdventureWorks2000DataSet1";
+            this.adventureWorks2000DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // productSubCategoryTableAdapter
+            // 
+            this.productSubCategoryTableAdapter.ClearBeforeFill = true;
+            // 
+            // pDinamicoOffer
+            // 
+            this.pDinamicoOffer.Location = new System.Drawing.Point(202, 97);
+            this.pDinamicoOffer.Name = "pDinamicoOffer";
+            this.pDinamicoOffer.Size = new System.Drawing.Size(200, 49);
+            this.pDinamicoOffer.TabIndex = 18;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -831,14 +817,15 @@
             this.tabControl3.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.productCategoryBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.adventureWorks2000DataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productSubCategoryBindingSource)).EndInit();
+            
             this.tpClientes.ResumeLayout(false);
             this.tpClientes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.adventureWorks2000DataSet)).EndInit();
             this.proveedores.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
             this.ventas.ResumeLayout(false);
@@ -852,6 +839,7 @@
             this.inventarios.ResumeLayout(false);
             this.tabControl8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.adventureWorks2000DataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.adventureWorks2000DataSet1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -902,21 +890,11 @@
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dgvClientes;
         private AdventureWorks2000DataSet adventureWorks2000DataSet;
         private System.Windows.Forms.BindingSource customerBindingSource;
@@ -931,6 +909,19 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn apellidoDataGridViewTextBoxColumn;
         private System.Windows.Forms.Panel pDinamico;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.ComboBox cbCategoriasOffer;
+        private System.Windows.Forms.BindingSource productCategoryBindingSource;
+        private AdventureWorks2000DataSetTableAdapters.ProductCategoryTableAdapter productCategoryTableAdapter;
+        private AdventureWorks2000DataSet1 adventureWorks2000DataSet1;
+        private System.Windows.Forms.BindingSource productSubCategoryBindingSource;
+        private AdventureWorks2000DataSet1TableAdapters.ProductSubCategoryTableAdapter productSubCategoryTableAdapter;
+        private DataTable dt;
+        private SqlDataAdapter dad;
+        private System.Windows.Forms.Panel pDinamicoOffer;
     }
 }
 

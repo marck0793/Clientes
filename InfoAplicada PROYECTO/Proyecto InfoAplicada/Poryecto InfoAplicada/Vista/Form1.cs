@@ -19,6 +19,7 @@ namespace Poryecto_InfoAplicada
         ComboBox cbCategorias;
         Panel patito;
         ComboBox cbSubcategorias;
+        ComboBox cbSubCategoriasOffer;
 
         public Form1()
         {
@@ -42,6 +43,8 @@ namespace Poryecto_InfoAplicada
                 dgvClientes.Width = 500;
                 dgvClientes.Height = 600;
                 dgvClientes.DataSource = dt;
+                this.dgvClientes.BackgroundColor = System.Drawing.Color.White;
+                this.dgvClientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
                 tpClientes.Controls.Add(dgvClientes);
             }
         }
@@ -53,6 +56,10 @@ namespace Poryecto_InfoAplicada
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'adventureWorks2000DataSet1.ProductSubCategory' table. You can move, or remove it, as needed.
+            this.productSubCategoryTableAdapter.Fill(this.adventureWorks2000DataSet1.ProductSubCategory);
+            // TODO: This line of code loads data into the 'adventureWorks2000DataSet.ProductCategory' table. You can move, or remove it, as needed.
+            this.productCategoryTableAdapter.Fill(this.adventureWorks2000DataSet.ProductCategory);
             // TODO: This line of code loads data into the 'adventureWorks2000DataSet.Customer' table. You can move, or remove it, as needed.
             this.customerTableAdapter.Fill(this.adventureWorks2000DataSet.Customer);
 
@@ -68,6 +75,8 @@ namespace Poryecto_InfoAplicada
             dgvClientes.Width = 500;
             dgvClientes.Height = 600;
             dgvClientes.DataSource = dt;
+            this.dgvClientes.BackgroundColor = System.Drawing.Color.White;
+            this.dgvClientes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             tpClientes.Controls.Add(dgvClientes);
         }
 
@@ -156,6 +165,36 @@ namespace Poryecto_InfoAplicada
         private void cbFiltro_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void dgvClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void cbCategoriasOffer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.pDinamicoOffer.Controls.Clear();
+            SqlDataAdapter dad = new SqlDataAdapter("select  psc.Name from ProductSubCategory psc inner join ProductCategory pc on pc.ProductCategoryID = psc.ProductCategoryID and psc.ProductCategoryID= (select ProductCategoryID from ProductCategory where Name = '"+this.cbCategoriasOffer.Text+"') order by ProductSubCategoryID;", con);
+            dt = new DataTable();
+            dad.Fill(dt);
+
+        
+            cbSubCategoriasOffer = new ComboBox();
+            cbSubCategoriasOffer.DataSource = dt;
+
+            cbSubCategoriasOffer.DisplayMember = "Name";
+            cbSubCategoriasOffer.ValueMember = "ProductSubCategoryId";
+
+            cbSubCategoriasOffer.SelectedValueChanged += new System.EventHandler(this.cbSubCategoriasOffer_selectedValueChanged);
+
+
+            this.pDinamicoOffer.Controls.Add(cbSubCategoriasOffer);
+        }
+
+        private void cbSubCategoriasOffer_selectedValueChanged(object sender, EventArgs e)
+        {
+            
         }
 
        

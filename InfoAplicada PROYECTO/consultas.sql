@@ -9,7 +9,7 @@ select i.CustomerID, i.FirstName, i.LastName, ps.Name as subCategoria, COUNT(*) 
 inner join SalesOrderHeader soh on soh.CustomerID = i.CustomerID inner join SalesOrderDetail sod
 on sod.SalesOrderID = soh.SalesOrderID
 inner join Product p on p.ProductID = sod.ProductID
-inner join ProductSubCategory ps on ps.ProductSubCategoryID = (select ProductSubCategoryID from ProductSubCategory where name = '')  
+inner join ProductSubCategory ps on ps.ProductSubCategoryID = (select ProductSubCategoryID from ProductSubCategory where name = 'Bike')  
 group by i.CustomerID, i.FirstName, i.LastName, ps.Name order by Cantidad desc;
 
 --CLIENTES POR CATEGORIAS--
