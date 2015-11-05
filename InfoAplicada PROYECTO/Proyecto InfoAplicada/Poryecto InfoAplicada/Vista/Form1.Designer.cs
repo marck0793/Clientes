@@ -469,6 +469,7 @@
             this.label6.Size = new System.Drawing.Size(39, 17);
             this.label6.TabIndex = 2;
             this.label6.Text = "Filtro";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // cbFiltro
             // 

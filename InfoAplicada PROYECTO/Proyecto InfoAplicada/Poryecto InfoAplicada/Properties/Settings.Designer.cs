@@ -33,5 +33,16 @@ namespace Poryecto_InfoAplicada.Properties {
                 return ((string)(this["AdventureWorks2000ConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=AND2109\\CLIENTES;Initial Catalog=AdventureWorks2000;Integrated Securi" +
+            "ty=True")]
+        public string AdventureWorks2000ConnectionString1 {
+            get {
+                return ((string)(this["AdventureWorks2000ConnectionString1"]));
+            }
+        }
     }
 }

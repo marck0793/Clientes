@@ -9,7 +9,8 @@ select i.CustomerID, i.FirstName, i.LastName, ps.Name as subCategoria, COUNT(*) 
 inner join SalesOrderHeader soh on soh.CustomerID = i.CustomerID inner join SalesOrderDetail sod
 on sod.SalesOrderID = soh.SalesOrderID
 inner join Product p on p.ProductID = sod.ProductID
-inner join ProductSubCategory ps on ps.ProductSubCategoryID = (select ProductSubCategoryID from ProductSubCategory where name = '')  
+inner join ProductSubCategory ps on ps.ProductSubCategoryID = (select ProductSubCategoryID 
+from ProductSubCategory where name = 'Mountain Bike')  
 group by i.CustomerID, i.FirstName, i.LastName, ps.Name order by Cantidad desc;
 
 --CLIENTES POR CATEGORIAS--
@@ -49,3 +50,16 @@ inner join SalesOrderHeader soh on i.CustomerID=soh.CustomerID
 group by i.CustomerID, i.FirstName, i.LastName 
 HAVING SUM(soh.totaldue) > (select avg(totaldue) from SalesOrderHeader)
 order by totalCompras desc;
+
+--PROMOCIONES
+
+select distinct Description from SpecialOffer so inner join SpecialOfferProduct sop  
+on so.SpecialOfferID=sop.SpecialOfferID;
+
+select description from SpecialOffer;
+
+select * from SpecialOfferProduct;
+
+select * from product;
+
+select * from ProductSubCategory;

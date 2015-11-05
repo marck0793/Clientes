@@ -158,6 +158,11 @@ namespace Poryecto_InfoAplicada
 
         }
 
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
        
     }
 }
