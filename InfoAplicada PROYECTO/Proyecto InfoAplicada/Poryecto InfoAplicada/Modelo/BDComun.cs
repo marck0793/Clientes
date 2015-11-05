@@ -11,7 +11,7 @@ namespace Poryecto_InfoAplicada.Modelo
     {
         public static SqlConnection ObtenerConexion()
         {
-            SqlConnection Conexion = new SqlConnection(@"Data Source=SOFTMARCK-PC\CLIENTES;Initial Catalog=AdventureWorks2000;Integrated Security=True");
+            SqlConnection Conexion = new SqlConnection(@"Data Source=AND2109\CLIENTES;Initial Catalog=AdventureWorks2000;Integrated Security=True");
             Conexion.Open();
             return Conexion;
 

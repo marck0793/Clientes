@@ -167,11 +167,16 @@ namespace Poryecto_InfoAplicada
 
         }
 
+<<<<<<< HEAD
         private void dgvClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+=======
+        private void label6_Click(object sender, EventArgs e)
+>>>>>>> origin/master
         {
 
         }
 
+<<<<<<< HEAD
         private void cbCategoriasOffer_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.pDinamicoOffer.Controls.Clear();
@@ -197,6 +202,8 @@ namespace Poryecto_InfoAplicada
             
         }
 
+=======
+>>>>>>> origin/master
        
     }
 }
